@@ -1,0 +1,30 @@
+{
+  "name": "u-se-github",
+  "version": "1.0.0",
+  "description": "Search GitHub users by their username and location",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fuji-Noobie-Ghost/u-se-github.git"
+  },
+  "author": "Fuji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fuji-Noobie-Ghost/u-se-github/issues"
+  },
+  "homepage": "https://github.com/Fuji-Noobie-Ghost/u-se-github#readme",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "hbs": "^4.2.0",
+    "octokit": "^2.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
