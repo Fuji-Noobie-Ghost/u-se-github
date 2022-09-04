@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' http://localhost:8080 'unsafe-inline' 'unsafe-eval';">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/card.css">
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <title>U-Se GitHub</title>
+</head>
+<body>
+    <div class="container fl-dir-col">
+        <div id="blur"></div>
+        <span class="slog">U-Se GitHub</span>
+
+        <div class="mini-container">
+            <div class="main-content w-40">
+                <div class="text-cont">
+                    <h1 class="title text-center">START&nbsp&nbsp&nbsp to &nbsp&nbsp&nbspSEARCH</h1>
+                </div>
+
+                <div class="log fl-dir-col">
+                    <div class="input-token search">
+                        <input type="text" name="username" id="username" placeholder="Username" class="input" disabled>
+                        <button class="btn btn-circle fa fa-search" id="search-btn"></button>
+                    </div>
+                    <select name="country" id="country" class="select">
+                    {{#each countries}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                    </select>
+                    <div class="btn-container flex fl-dir-row">
+                        <button id="prev" class="fa fa-arrow-left btn btn-circle"></button>
+                        <button id="next" class="fa fa-arrow-right btn btn-circle"></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-container" id="card-target"></div>
+        </div>
+    </div>
+
+    <script src="/axios/dist/axios.min.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

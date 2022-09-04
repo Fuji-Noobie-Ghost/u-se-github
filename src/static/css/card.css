@@ -1,0 +1,18 @@
+div.list-container {
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow-y: scroll;
+    height: 90vh;
+}
+
+div.card {
+    z-index: 1;
+    padding: 5px;
+    border-radius: 5px;
+    /* background-image: url(/static/img/gradient.jpg); */
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
