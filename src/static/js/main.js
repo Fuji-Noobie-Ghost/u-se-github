@@ -4,6 +4,7 @@ const country = document.getElementById('country')
 const username = document.getElementById('username')
 const searchBtn = document.getElementById('search-btn')
 const cardTarget = document.getElementById('card-target')
+const pageNum = document.getElementById('page')
 
 const prev = document.getElementById('prev')
 const next = document.getElementById('next')
@@ -13,15 +14,19 @@ let total = 0
 
 prev.addEventListener('click', async () => {
     if (currentPage > 1) {
+        currentPage--
         cardTarget.innerHTML = ''
-        await searchRequest(country.value.toLowerCase(), --currentPage, username.value)
+        await searchRequest(country.value.toLowerCase(), currentPage, username.value, false)
+        pageNum.innerText = currentPage + ' / ' + Math.floor(total / 10)
     }
 })
 
 next.addEventListener('click', async () => {
     if (currentPage * 10 < total) {
+        currentPage++
         cardTarget.innerHTML = ''
-        await searchRequest(country.value.toLowerCase(), ++currentPage, username.value)
+        await searchRequest(country.value.toLowerCase(), currentPage, username.value, false)
+        pageNum.innerText = currentPage + ' / ' + Math.floor(total / 10)
     }
 })
 
@@ -39,11 +44,12 @@ searchBtn.addEventListener('click', async () => {
     }
 })
 
-async function searchRequest (location, page, name) {
+async function searchRequest (location, page, name, isNew=true) {
     let users = await axios.get(`http://localhost:8080/search?location=${location}&page=${page}&username=${name}`)
-    currentPage = 1
+    if (isNew) currentPage = 1
     users = users.data
     total = users.total_count
+    pageNum.innerText = currentPage + ' / ' + Math.floor(total / 10)
     users.items.forEach(user => {
         createCard({
             img: user.avatar_url,

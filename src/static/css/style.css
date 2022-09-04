@@ -173,6 +173,11 @@ div.search {
     justify-content: space-between;
 }
 
+.page {
+    color: white;
+    font-size: medium;
+}
+
 @media screen and (max-width: 600px) {
     div.mini-container {
         flex-direction: column;
