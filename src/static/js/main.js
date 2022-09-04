@@ -33,14 +33,15 @@ country.addEventListener('change', async () => {
 })
 
 searchBtn.addEventListener('click', async () => {
-    cardTarget.innerHTML = ''
-    if (!username.getAttribute('disabled')) {
+    if (country.value) {
+        cardTarget.innerHTML = ''
         await searchRequest(country.value.toLowerCase(), currentPage, username.value)
     }
 })
 
 async function searchRequest (location, page, name) {
     let users = await axios.get(`http://localhost:8080/search?location=${location}&page=${page}&username=${name}`)
+    currentPage = 1
     users = users.data
     total = users.total_count
     users.items.forEach(user => {

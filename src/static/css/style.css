@@ -168,6 +168,11 @@ div.search {
     outline: none;
 }
 
+.btn-container {
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
 @media screen and (max-width: 600px) {
     div.mini-container {
         flex-direction: column;
