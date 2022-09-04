@@ -9,6 +9,7 @@ const prev = document.getElementById('prev')
 const next = document.getElementById('next')
 
 let currentPage = 1
+let total = 0
 
 prev.addEventListener('click', () => {
     if (currentPage)
@@ -18,16 +19,7 @@ country.addEventListener('change', async () => {
     cardTarget.innerHTML = ''
     username.removeAttribute('disabled')
 
-    const users = await searchRequest(country.value.toLowerCase(), currentPage, username.value)
-
-    users.items.forEach(user => {
-        createCard({
-            img: user.avatar_url,
-            name: user.login,
-            link: user.html_url,
-            target: cardTarget
-        })
-    })
+    await searchRequest(country.value.toLowerCase(), currentPage, username.value)
 })
 
 searchBtn.addEventListener('click', async () => {
