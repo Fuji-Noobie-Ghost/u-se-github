@@ -11,8 +11,18 @@ const next = document.getElementById('next')
 let currentPage = 1
 let total = 0
 
-prev.addEventListener('click', () => {
-    if (currentPage)
+prev.addEventListener('click', async () => {
+    if (currentPage > 1) {
+        cardTarget.innerHTML = ''
+        await searchRequest(country.value.toLowerCase(), --currentPage, username.value)
+    }
+})
+
+next.addEventListener('click', async () => {
+    if (currentPage * 10 < total) {
+        cardTarget.innerHTML = ''
+        await searchRequest(country.value.toLowerCase(), ++currentPage, username.value)
+    }
 })
 
 country.addEventListener('change', async () => {
@@ -32,6 +42,7 @@ searchBtn.addEventListener('click', async () => {
 async function searchRequest (location, page, name) {
     let users = await axios.get(`http://localhost:8080/search?location=${location}&page=${page}&username=${name}`)
     users = users.data
+    total = users.total_count
     users.items.forEach(user => {
         createCard({
             img: user.avatar_url,
